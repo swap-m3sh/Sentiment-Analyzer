@@ -1,0 +1,36 @@
+{
+    "manifest_version":2,
+    "version":"1.0",
+    "name":"ACM Project",
+    "icons":{
+        "128":"Logos/youtubeLogo128.png",
+        "48":"Logos/youtubeLogo48.png",
+        "16":"Logos/youtubeLogo16.png"
+    },
+
+    "description":"Youtube comments Filtering extension",
+
+    "browser_action":{
+        "default_popup":"popup.html",
+        "default_title":"ACMProject",
+        "default_icon":"Logos/youtubeLogo16.png"
+    },
+
+    "background":{
+        "scripts":["eventPage.js"],
+        "persistent":false
+    },
+
+    "content_scripts":[
+        {
+            "matches":["https://www.youtube.com/*"],
+            "js":["content.js","jquery.min.js"],
+            "css":["content.css"]
+        }
+    ],
+
+    "permissions":[
+        "tabs",
+        "https://www.youtube.com/*"
+    ]
+}
