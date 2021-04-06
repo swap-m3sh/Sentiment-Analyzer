@@ -12,6 +12,17 @@ checkBox.addEventListener('change',function(){
 
             chrome.tabs.sendMessage(tabs[0].id,{todo:'hideComments'});
             console.log('message sent');
+
+            var notify={
+                type:'basic',
+                iconUrl:'Logos/youtubeLogo48.png',
+                title:'Filtering Started',
+                message:'Filtering process is started. Please do not close or reload this tab'
+            };
+            chrome.notifications.create('notification', notify,()=>{
+                console.log('Notified');
+            });
+
         });
     }
 
