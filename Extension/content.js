@@ -1,5 +1,9 @@
 // chrome.runtime.sendMessage({todo:"showActionPage"});
 
+window.addEventListener('load',(e)=>{
+  chrome.storage.sync.set({'status':0})
+})
+
 chrome.runtime.onMessage.addListener((req, sender, sendRes) => {
   if (req.todo == "hideComments") {
     // const allImg = document.querySelectorAll('.yt-img-shadow');
