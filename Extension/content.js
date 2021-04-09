@@ -4,6 +4,8 @@ window.addEventListener('load',(e)=>{
   chrome.storage.sync.set({'status':0})
 })
 
+var arr=[1,2,7,8,10,13,17];
+
 chrome.runtime.onMessage.addListener((req, sender, sendRes) => {
   if (req.todo == "hideComments") {
     // const allImg = document.querySelectorAll('.yt-img-shadow');
@@ -36,7 +38,7 @@ chrome.runtime.onMessage.addListener((req, sender, sendRes) => {
       // if(imgSrc[i]=='https://yt3.ggpht.com/ytc/AAUvwnjEt2U7ffjo_Lx4NcBRYVU3E9ocPD6UpHQ0Ow=s88-c-k-c0x00ffffff-no-rj'){
       //     chrome.runtime.sendMessage({todo:"msg7",message:true});
       // }
-      if (i == 2) {
+      if (arr.includes(i)) {
         // chrome.runtime.sendMessage({todo:"msg9",message:x[i]});
         continue;
       } else {
