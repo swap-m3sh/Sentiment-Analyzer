@@ -35,7 +35,7 @@ function checked(){
         let url = tabs[0].url;
         console.log(`${url}`);
 
-        chrome.tabs.sendMessage(tabs[0].id,{todo:'hideComments'});
+        chrome.tabs.sendMessage(tabs[0].id,{todo:'hideComments',message:url});
         console.log('message sent');
 
         var notify={

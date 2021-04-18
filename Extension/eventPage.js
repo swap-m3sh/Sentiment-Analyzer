@@ -25,7 +25,7 @@ chrome.runtime.onMessage.addListener((request,sender,sendResponse)=>{
     }
 
     if(request.todo=="msg8"){
-        console.log(`${request.message}`);
+        console.log(`${request.message} + array`);
         
     }
 
