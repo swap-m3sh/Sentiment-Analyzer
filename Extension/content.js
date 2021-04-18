@@ -94,11 +94,7 @@ chrome.runtime.onMessage.addListener(async(req, sender, sendRes) => {
 
   if (req.todo == "UnHideComments") {
     chrome.runtime.sendMessage({ todo: "msg2" });
-    for (var i = x.length - 1; i >= 0; i--) {
-      if (i == 2) {
-        $("#contents").prepend(x[i]);
-      }
-    }
+    location.reload();
   }
 });
 
