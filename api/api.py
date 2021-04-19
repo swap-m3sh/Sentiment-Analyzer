@@ -1,8 +1,14 @@
 import os
+import sys
+import json
+import pandas as pd
 from googleapiclient.discovery import build
 
-def main():
+def fetchComments(url):
     # only for development
+    url_list = url.split(sep="=")
+    video_url = url_list[-1]
+
     api_service_name = "youtube"
     api_version = "v3"
     DEVELOPER_KEY = os.environ.get('DEV_KEY')
@@ -14,11 +20,20 @@ def main():
         part="snippet",
         order="relevance",
         textFormat="html",
-        videoId="E16WhXcIghM"
+        videoId= video_url
     )
     response = request.execute()
-
-    print(response)
+    data = []
+    for v in response['items']:
+        data.append(v['snippet']['topLevelComment']['snippet']['textOriginal'])    
+    comments = pd.DataFrame(data)
+    # print(comments)
+    return comments
 
 if __name__ == "__main__":
-    main()
+    try:
+        arg = sys.argv[1]
+    except IndexError:
+        arg = None
+
+    return_val = fetchComments(arg)
