@@ -12,9 +12,9 @@ tf.get_logger().setLevel('ERROR')
 
 import nltk
 
-# nltk.download('stopwords')
-# nltk.download('wordnet')
-# nltk.download('punkt')
+nltk.download('stopwords', quiet=True)
+nltk.download('wordnet', quiet=True)
+nltk.download('punkt', quiet=True)
 
 from nltk.corpus import stopwords
 stopwords_list = stopwords.words('english')
