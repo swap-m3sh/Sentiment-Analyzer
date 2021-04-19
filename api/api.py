@@ -26,8 +26,7 @@ def fetchComments(url):
     data = []
     for v in response['items']:
         data.append(v['snippet']['topLevelComment']['snippet']['textOriginal'])    
-    comments = pd.DataFrame(data)
-    # print(comments)
+    comments = pd.Series(data)
     return comments
 
 if __name__ == "__main__":
@@ -36,4 +35,4 @@ if __name__ == "__main__":
     except IndexError:
         arg = None
 
-    return_val = fetchComments(arg)
+    print(fetchComments(arg))
