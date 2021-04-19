@@ -64,10 +64,10 @@ import pickle
 # with open('/model/tok.pickle', mode='wb') as handle:
 #     pickle.dump(tok, handle, protocol = pickle.HIGHEST_PROTOCOL)
 
-with open('model/tok.pickle',mode='rb') as handle:
+with open('./api/model/tok.pickle',mode='rb') as handle:
     tok = pickle.load(handle)
 
-model = tf.keras.models.load_model('model/model.h5')
+model = tf.keras.models.load_model('./api/model/model.h5')
 
 def cleaning_message(df):
     df=df.str.lower()
@@ -88,8 +88,8 @@ def analyzer(data):
     # dfd = pd.DataFrame({
     #     'text': [t1,t2]
     # })
-
     # data = dfd['text']
+
     data = cleaning_message(data)
     max_len = 1000
     tok.fit_on_texts(data)
@@ -110,7 +110,6 @@ def analyzer(data):
     df= df.reindex(columns=['index', 'value'])
 
     result = df.to_json(orient="records")
-    print(result)
     return result
 
 if __name__ == "__main__":
@@ -119,4 +118,4 @@ if __name__ == "__main__":
     except IndexError:
         arg = None
 
-    return_val = analyzer(arg)
+    print(analyzer(arg))
