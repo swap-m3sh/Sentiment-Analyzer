@@ -1,7 +1,7 @@
 {
     "manifest_version":2,
     "version":"1.0",
-    "name":"ACM Project",
+    "name":"Youtube Comment Filter",
     "icons":{
         "128":"Logos/youtubeLogo128.png",
         "48":"Logos/youtubeLogo48.png",
