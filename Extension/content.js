@@ -18,7 +18,7 @@ async function getData() {
   const location = window.location.hostname;
 
   try {
-    const fetchResponse = await fetch("https://456915cc4cc8.ngrok.io/", {
+    const fetchResponse = await fetch("https://8f63a5737211.ngrok.io", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ chrome.runtime.onMessage.addListener(async (req, sender, sendRes) => {
     var hidden = [];
     var data = await getData();
     data.forEach((element) => {
-      if (element.value == 0) {
+      if (element.value == 'Negative Comment') {
         hidden.push(element.index);
       }
     });
