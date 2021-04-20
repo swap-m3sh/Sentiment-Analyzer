@@ -90,24 +90,23 @@ def analyzer(data):
     # })
     # data = dfd['text']
 
-    data = cleaning_message(data)
+    dt = cleaning_message(data)
     max_len = 1000
-    tok.fit_on_texts(data)
-    sequences = tok.texts_to_sequences(data)
+    tok.fit_on_texts(dt)
+    sequences = tok.texts_to_sequences(dt)
     sequences_matrix = sequence.pad_sequences(sequences,maxlen=max_len)
-
     y_bar= model.predict(sequences_matrix)
     y_bar = (y_bar > 0.5)
-
-    y_bar = y_bar*1
-
+    y_bar = y_bar*1   #changing True to 1 and False to 0
     columns = ['value']
     index = []
     for i in range(y_bar.size):
         index.append(i)
     df = pd.DataFrame(y_bar, columns=columns)
     df['index'] = index
-    df= df.reindex(columns=['index', 'value'])
+    df['comment'] = data
+    df= df.reindex(columns=['index', 'comment', 'value'])
+    df['value'] = df['value'].apply(lambda x: "Positive Comment" if( x==1) else "Negative Comment") 
 
     result = df.to_json(orient="records")
     return result
