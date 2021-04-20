@@ -19,6 +19,7 @@ def fetchComments(url):
     request = youtube.commentThreads().list(
         part="snippet",
         order="relevance",
+        maxResults=50,
         textFormat="html",
         videoId= video_url
     )
