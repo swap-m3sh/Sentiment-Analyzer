@@ -28,7 +28,7 @@ async function getData() {
       }),
     });
     if (fetchResponse.ok) {
-      chrome.runtime.sendMessage({ todo: "msg9", message: "NOT Error" });
+      chrome.runtime.sendMessage({ todo: "msg9", message: "POST Request Successful" });
       return fetchResponse.json();
     } else {
       chrome.runtime.sendMessage({ todo: "msg9", message: "Error" });
@@ -47,22 +47,27 @@ chrome.runtime.onMessage.addListener(async (req, sender, sendRes) => {
     var data = await getData();
     data.forEach((element) => {
       if (element.value == 'Negative Comment') {
-        hidden.push(element.index);
+        var c=element.comment;
+        c=c.replace(/\s+/g, '');
+        c=c.replace('\n','');
+        hidden.push(c);
       }
     });
 
-    chrome.runtime.sendMessage({ todo: "msg4", message: hidden });
+    // chrome.runtime.sendMessage({ todo: "msg4", message: hidden });
     var msg;
     var x = [];
     var imgSrc = [];
     var msgs = [];
     var j = 0;
     var p = 0;
+    var msgs1=[];
     $("#contents")
       .children()
       .each((i) => {
         msg = $("#content-text").text();
-        // msg=msg.replace(/\s+/g, '');
+        msgs1[j]=msg;
+        msg=msg.replace(/\s+/g, '');
         msgs[j] = msg;
         j++;
         imgSrc[i] = $("#img").attr("src");
@@ -82,21 +87,21 @@ chrome.runtime.onMessage.addListener(async (req, sender, sendRes) => {
       // if(imgSrc[i]=='https://yt3.ggpht.com/ytc/AAUvwnjEt2U7ffjo_Lx4NcBRYVU3E9ocPD6UpHQ0Ow=s88-c-k-c0x00ffffff-no-rj'){
       //     chrome.runtime.sendMessage({todo:"msg7",message:true});
       // }
-      if (hidden.includes(i)) {
-        chrome.runtime.sendMessage({ todo: "msg9", message: msgs[i] });
-        continue;
-      } else {
-        p++;
-        $("#contents").prepend(x[i]);
-      }
-
-      // if(hidden.includes(msgs[i])){
-      //   chrome.runtime.sendMessage({ todo: "msg6",message:hidden[p] });
-      //   // p--;
+      // if (hidden.includes(i)) {
+      //   chrome.runtime.sendMessage({ todo: "msg9", message: msgs[i] });
       //   continue;
-      // }else{
+      // } else {
+      //   p++;
       //   $("#contents").prepend(x[i]);
       // }
+
+      if(hidden.includes(msgs[i])){
+        chrome.runtime.sendMessage({ todo: "msg6",message:msgs1[i] });
+        // p--;
+        continue;
+      }else{
+        $("#contents").prepend(x[i]);
+      }
     }
     // }, 3000);
   }
