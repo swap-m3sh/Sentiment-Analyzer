@@ -18,7 +18,7 @@ async function getData() {
   const location = window.location.hostname;
 
   try {
-    const fetchResponse = await fetch("https://8f63a5737211.ngrok.io", {
+    const fetchResponse = await fetch("https://sentiment-analyzer-backend.herokuapp.com/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
