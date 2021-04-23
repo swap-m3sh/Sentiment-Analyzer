@@ -11,7 +11,7 @@ The current times have highlighted the increasing negativity in and around our s
 NLTK, Tensorflow, Django, Google Youtube API, Javascript, Heroku
 
 ## Working of our project
-The chrome extension firstly detaches all the comments and sends a POST request of Json having the link to the youtube URL to the Django-Backend. There are mainly three scripts: fetching the comments, processing them using the ML model, sending the JSON of the result. Fetching of youtube comments is achieved using Google Youtube API. The comments are then fed in the model and the model returns a Json classifying the comments as Positive Comments or Negative comments. Based on the JSON, the chrome extension prepends only the positive comment. Thus filtering Negative comments.
+The chrome extension firstly detaches all the comments and sends a POST request of Json having the link to the youtube URL to the Django-Backend. There are mainly three scripts: fetching the comments, processing them using the ML model, sending the JSON of the result. Fetching of youtube comments is achieved using Google Youtube API. While processing the model all the pre-processing of data like lemmatizing, stemming etc is done to make the input more accurate and focus only towards the sentiments of users.Then all data is fed to model it returns the final outcome as a Json classifying the comments as Positive Comments or Negative comments. Based on the JSON, the chrome extension prepends only the positive comment. Thus filtering Negative comments.
 
 ## Link to the working video: [here](https://youtu.be/3J83gB2I8D4)
 
