@@ -15,5 +15,5 @@ The current times have highlighted the increasing negativity in and around our s
 6. On the 'Select the extension directory' window, open the Sentiment-Analyzer repo which you have just downloaded in step 1 and select 'Youtube Comment Filter'
 7. After selecting it, you'll see the Youtube Comment Filter extension box on the screen
 8. Go to Youtube and play any video
-9. Click on the 'Manage Extensions' icon next to the URL search bar
+9. Click on the 'Extensions' icon next to the URL search bar
 10. Select the 'Youtube Comment Filter' extenstion and enable 'Start Filtering Comments' 
