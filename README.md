@@ -11,9 +11,15 @@ The current times have highlighted the increasing negativity in and around our s
 NLTK, Tensorflow, Django, Google Youtube API, Javascript, Heroku
 
 ## Working of our project
-The chrome-extension firstly detach all the comments and sends a POST request of Json having the link to the youtube url to the Django-Backend. There are mainly three scripts: fetching the comments, processing on them using ML model, sending the Json of result. Fetching of youtube comments is acheived using Google Youtube API. The comments are then fed in the model and model return a Json classifying the comments as Positive Comments or Negative comments. Based on the Json, the chrome-extension, prepends only the positive comment. Thus filtering Negative comments.
+The chrome extension firstly detaches all the comments and sends a POST request of Json having the link to the youtube URL to the Django-Backend. There are mainly three scripts: fetching the comments, processing them using the ML model, sending the JSON of the result. Fetching of youtube comments is achieved using Google Youtube API. The comments are then fed in the model and the model returns a Json classifying the comments as Positive Comments or Negative comments. Based on the JSON, the chrome extension prepends only the positive comment. Thus filtering Negative comments.
 
 ## Link to the working video: [here](https://youtu.be/3J83gB2I8D4)
+
+## Challenges Faced
+- Proper dataset appropriate for our project was not available. So, we combined 3 dataset for the model.
+- Using Naive's Bayes Algorithm, we were getting accuracy of 55%. Then we used CNN model and then we got accuracy of 93%.
+- We were facing [CORS error](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors) while integrating extension and backend. It was solved by adding CORS config in the backend.
+- We were first using the indexes for the comments to detach and prepend. The problem in that was that the indexes comments fetched by the API and the comments seen on the youtube were mismatching due to dynamic database of the youtube. Instead of matching indexes, we matched the comments while prepending them back to the page.
 
 ## Steps-To-Use
 1. Download zip or Clone the Sentiment-Analyzer GIT repository to your desired location.
